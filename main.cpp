@@ -182,7 +182,7 @@ int main()
     // coding began: 6:30 AM, Sun April 20th, 2025
     // found 3 solutions 12:19 AM, same day
 
-    int rotations = 4;
+    int rotations = 6;
 
     int setIndex = 0;
 
@@ -192,7 +192,7 @@ int main()
     int threesIndex2 = 0;
 
     //TwoByTwoSet sets[2000];
-    TwoByTwoIndex twos[3500];
+    TwoByTwoIndex twos[14408];
 
     int yeah = 20010;
 
@@ -331,7 +331,7 @@ int main()
                                                         if (checkFit(pieces[BLI].getRight(r2), pieces[BRI].getLeft(r3))
                                                             && checkFit(pieces[TRI].getDown(r1), pieces[BRI].getUp(r3)))
                                                         {
-                                                            if (setIndex == 5)
+                                                            if (r0 >= rotations || r1 >= rotations || r2 >= rotations || r3 >= rotations)
                                                             {
                                                                 int bp = 5;
                                                             }
@@ -969,6 +969,12 @@ Shape Piece::getUp(int rot)
     case 5:// flipped vertically
         return down;
         break;
+    case 6:// rotated cwise and flipped horizontally
+        return left;
+        break;
+    case 7:// rotated cwise and flipped vertically
+        return right;
+        break;
     default:
         return Shape::ERROR;
     }
@@ -995,6 +1001,12 @@ Shape Piece::getRight(int rot)
         break;
     case 5:// flipped vertically
         return right;
+        break;
+    case 6:// rotated cwise and flipped horizontally
+        return down;
+        break;
+    case 7:// rotated cwise and flipped vertically
+        return up;
         break;
     default:
         return Shape::ERROR;
@@ -1023,6 +1035,12 @@ Shape Piece::getDown(int rot)
     case 5:// flipped vertically
         return up;
         break;
+    case 6:// rotated cwise and flipped horizontally
+        return right;
+        break;
+    case 7:// rotated cwise and flipped vertically
+        return left;
+        break;
     default:
         return Shape::ERROR;
     }
@@ -1049,6 +1067,12 @@ Shape Piece::getLeft(int rot)
         break;
     case 5:// flipped vertically
         return left;
+        break;
+    case 6:// rotated cwise and flipped horizontally
+        return up;
+        break;
+    case 7:// rotated cwise and flipped vertically
+        return down;
         break;
     default:
         return Shape::ERROR;
